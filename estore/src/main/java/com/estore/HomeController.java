@@ -1,4 +1,4 @@
-package com.gmail.vlad;
+package com.estore;
 
 import java.text.DateFormat;
 import java.util.Date;
