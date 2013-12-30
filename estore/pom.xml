@@ -31,9 +31,12 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
-		</dependency>
-				
-		<!-- AspectJ -->
+		</dependency>	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency><!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
@@ -115,6 +118,7 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>4.2.0.Final</version>
 		</dependency>
+		
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -122,6 +126,31 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>10.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.3.174</version>
+		</dependency>
+		
+		<!-- necessary for DriverManagerDataSource -->
+		<dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jaxen-core</artifactId>
+			<version>1.0-FCS</version>
+		</dependency>
+		
 	</dependencies>
     <build>
         <plugins>
