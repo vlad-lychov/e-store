@@ -3,7 +3,7 @@ package com.estore.dao;
 import java.io.Serializable;
 import java.util.List;
 
-public interface GenericDao<KEY, TYPE extends Serializable> {
+public interface GenericDao<KEY extends Serializable, TYPE> {
 
 	public KEY create(TYPE instance);
 	
