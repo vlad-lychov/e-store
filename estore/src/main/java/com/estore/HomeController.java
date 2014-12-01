@@ -50,7 +50,7 @@ public class HomeController {
 	public String homeTest(Locale locale, Model model) {
 		
 		Product p = productDao.findById("1");
-		logger.info("id = " + p.getId() + " , title = " + p.getTitle() + " , description = " + p.getDescription() + ", created = " + new Date(p.getCreated()));
+		logger.info("id = " + p.getId() + " , title = " + p.getTitle() + " , description = " + p.getDescription() + ", created = " + p.getCreated());
 		
 		return "home";
 	}

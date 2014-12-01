@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+	<class name="com.estore.catalog.datamodel.Category" table="PRODUCT">
+		<id name="id" type="string" column="category_id">
+			<generator class="native"/>
+		</id>
+		<property name="title" type="string" not-null="true"/>
+		<property name="description"  type="string"/>
+		<property name="created" type="timestamp"/>
+		<property name="image" type="string"/>
+		<set name="products" table="product_category" inverse="false" lazy="true" fetch="select" >
+			<key>
+				<column name="category_id" not-null="true" />
+			</key>
+			<many-to-many entity-name="com.estore.catalog.datamodel.Product">
+				<column name="product_id" not-null="true" />
+			</many-to-many>
+		</set>
+		<one-to-one name="childCategories" class="com.estore.catalog.datamodel.Category" />
+		<set name="parentCategories" table="category_childCategory" inverse="false" lazy="true" fetch="select" >
+			<key>
+				<column name="category_id" not-null="true" />
+			</key>
+			<many-to-many entity-name="com.estore.catalog.datamodel.Category">
+				<column name="child_category_id" not-null="true" />
+			</many-to-many>
+		</set>
+		<property name="rootCategory" type="boolean" not-null="true"/>
+	</class>
+</hibernate-mapping>

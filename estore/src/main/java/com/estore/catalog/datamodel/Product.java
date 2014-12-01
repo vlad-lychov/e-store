@@ -1,5 +1,6 @@
 package com.estore.catalog.datamodel;
 
+import java.sql.Timestamp;
 import java.util.Set;
 
 public class Product {
@@ -7,10 +8,11 @@ public class Product {
 	private String id;
 	private String title;
 	private String description;
-	private long created;
+	private Timestamp created;
 	private String mainImage;
 	private Set<String> images;
-	private Category parentCategory;
+	private Category defaultParentCategory;
+	private Set<String> parentCategories;
 	
 	public String getId() {
 		return id;
@@ -35,11 +37,11 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public long getCreated() {
+	public Timestamp getCreated() {
 		return created;
 	}
 	
-	public void setCreated(long created) {
+	public void setCreated(Timestamp created) {
 		this.created = created;
 	}
 	
@@ -58,12 +60,22 @@ public class Product {
 	public void setImages(Set<String> images) {
 		this.images = images;
 	}
-	
-	public Category getParentCategory() {
-		return parentCategory;
+
+	public Category getDefaultParentCategory() {
+		return defaultParentCategory;
+	}
+
+	public void setDefaultParentCategory(Category defaultParentCategory) {
+		this.defaultParentCategory = defaultParentCategory;
+	}
+
+	public Set<String> getParentCategories() {
+		return parentCategories;
+	}
+
+	public void setParentCategories(Set<String> defaultParentCategories) {
+		this.parentCategories = defaultParentCategories;
 	}
 	
-	public void setParentCategory(Category parentCategory) {
-		this.parentCategory = parentCategory;
-	}
+	
 }
