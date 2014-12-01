@@ -25,6 +25,7 @@
         <property name="cacheableMappingLocations">
             <array>
                 <value>classpath:mapping/Product.hbm.xml</value>
+                <value>classpath:mapping/Category.hbm.xml</value>
             </array>
         </property>
     </bean>

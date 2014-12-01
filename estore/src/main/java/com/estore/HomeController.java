@@ -1,12 +1,10 @@
 package com.estore;
 
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.estore.catalog.datamodel.Category;
 import com.estore.catalog.datamodel.Product;
+import com.estore.dao.impl.CategoryDao;
 import com.estore.dao.impl.ProductDao;
+import com.google.common.collect.Sets;
 
 /**
  * Handles requests for the application home page.
@@ -28,6 +29,9 @@ public class HomeController {
 	
 	@Autowired
 	private ProductDao productDao;
+	
+	@Autowired
+	private CategoryDao categoryDao;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -52,6 +56,23 @@ public class HomeController {
 		Product p = productDao.findById("1");
 		logger.info("id = " + p.getId() + " , title = " + p.getTitle() + " , description = " + p.getDescription() + ", created = " + p.getCreated());
 		
+		Category cat1 = new Category();
+		cat1.setTitle("title");
+		cat1.setDescription("description1");
+		cat1.setCreated(new Timestamp(System.currentTimeMillis()));
+		cat1.setProducts(Sets.newHashSet(p));
+		
+		String idCreated = categoryDao.create(cat1);
+		logger.info("idCreated: ", idCreated);
+		
+		Category cat1Created = categoryDao.findById(idCreated);
+		logger.info("id = " + cat1Created.getId() + " , title = " + cat1Created.getTitle() + " , description = " + cat1Created.getDescription() 
+				+ ", created = " + p.getCreated());
+		
+		cat1Created.setDescription("description111");
+		categoryDao.saveOrUpdate(cat1Created);
+		logger.info("id = " + cat1Created.getId() + " , title = " + cat1Created.getTitle() + " , description = " + cat1Created.getDescription() 
+				+ ", created = " + p.getCreated());
 		return "home";
 	}
 	

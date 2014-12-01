@@ -3,15 +3,21 @@ package com.estore.dao.impl;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.GenericTypeResolver;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.estore.dao.GenericDao;
 
+@SuppressWarnings("unchecked")
 public class GenericDaoHibernate <KEY  extends Serializable, TYPE> extends
 								HibernateDaoSupport implements GenericDao<KEY, TYPE> {
 
@@ -22,37 +28,34 @@ public class GenericDaoHibernate <KEY  extends Serializable, TYPE> extends
 		setSessionFactory(sessionFactory);
 	}
 	
-	@SuppressWarnings("unchecked")
 	protected Class<? extends TYPE> getEntityClass() {
-		return GenericTypeResolver.resolveTypeArguments(getClass(),
-				GenericDaoHibernate.class)[1];
+		return GenericTypeResolver.resolveTypeArguments(getClass(), GenericDaoHibernate.class)[1];
 	}
 
 	protected String getEntityIdName() {
-		String idName = getSessionFactory().getClassMetadata(getEntityClass())
-				.getIdentifierPropertyName();
-		return idName;
+		return getSessionFactory().getClassMetadata(getEntityClass()).getIdentifierPropertyName();
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public KEY create(TYPE instance) {
-		// TODO Auto-generated method stub
-		return null;
+		return (KEY) getHibernateTemplate().save(instance);
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void saveOrUpdate(TYPE instance) {
-		// TODO Auto-generated method stub
+		getHibernateTemplate().saveOrUpdate(getHibernateTemplate().merge(instance));
 		
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(TYPE instance) {
-		// TODO Auto-generated method stub
+		getHibernateTemplate().delete(getHibernateTemplate().merge(instance));
 		
 	}
-
-	@SuppressWarnings("unchecked")
+	
 	@Override
 	public TYPE findById(KEY id) {
 		return (TYPE) getSession().get(getEntityClass(), id);
@@ -60,14 +63,25 @@ public class GenericDaoHibernate <KEY  extends Serializable, TYPE> extends
 
 	@Override
 	public int count() {
-		// TODO Auto-generated method stub
-		return 0;
+		DetachedCriteria criteria = DetachedCriteria.forClass(getEntityClass());
+		criteria.setProjection(Projections.rowCount());
+		return ((Long) findUniqueByCriteria(criteria)).intValue();
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	protected Object findUniqueByCriteria(DetachedCriteria criteria){
+		return criteria.getExecutableCriteria(getSession()).uniqueResult();
 	}
 
 	@Override
 	public List<TYPE> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		DetachedCriteria criteria = DetachedCriteria.forClass(getEntityClass());
+		return (List<TYPE>) findByCriteria(criteria);
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	protected List<?> findByCriteria(DetachedCriteria criteria) {
+		return criteria.getExecutableCriteria(getSession()).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 	}
 	
 	

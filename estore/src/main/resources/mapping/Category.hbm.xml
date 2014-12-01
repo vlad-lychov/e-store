@@ -4,7 +4,7 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-	<class name="com.estore.catalog.datamodel.Category" table="PRODUCT">
+	<class name="com.estore.catalog.datamodel.Category" table="category">
 		<id name="id" type="string" column="category_id">
 			<generator class="native"/>
 		</id>
@@ -20,15 +20,13 @@
 				<column name="product_id" not-null="true" />
 			</many-to-many>
 		</set>
-		<one-to-one name="childCategories" class="com.estore.catalog.datamodel.Category" />
-		<set name="parentCategories" table="category_childCategory" inverse="false" lazy="true" fetch="select" >
-			<key>
-				<column name="category_id" not-null="true" />
-			</key>
-			<many-to-many entity-name="com.estore.catalog.datamodel.Category">
-				<column name="child_category_id" not-null="true" />
-			</many-to-many>
-		</set>
+		<one-to-one name="parentCategory" class="com.estore.catalog.datamodel.Category" />
+		<set name="childCategories" table="category" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="category_id" not-null="true" />
+            </key>
+            <one-to-many class="com.estore.catalog.datamodel.Category" />
+        </set>
 		<property name="rootCategory" type="boolean" not-null="true"/>
 	</class>
 </hibernate-mapping>

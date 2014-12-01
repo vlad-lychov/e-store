@@ -4,7 +4,7 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-	<class name="com.estore.catalog.datamodel.Product" table="PRODUCT">
+	<class name="com.estore.catalog.datamodel.Product" table="product">
 		<id name="id" type="string" column="product_id">
 			<generator class="native"/>
 		</id>
