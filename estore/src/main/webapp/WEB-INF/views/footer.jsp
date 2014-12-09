@@ -44,9 +44,9 @@
 				 <div class="col_1_of_f_2 span_1_of_f_2">
 				   <h3>Contact us</h3>
 						<div class="company_address">
-					                <p>500 Lorem Ipsum Dolor Sit,</p>
-							   		<p>22-56-2-9 Sit Amet, Lorem,</p>
-							   		<p>USA</p>
+					        <p>500 Lorem Ipsum Dolor Sit,</p>
+					   		<p>22-56-2-9 Sit Amet, Lorem,</p>
+					   		<p>USA</p>
 					   		<p>Phone:(00) 222 666 444</p>
 					   		<p>Fax: (000) 000 00 00 0</p>
 					 	 	<p>Email: <span>mail[at]leoshop.com</span></p>
@@ -82,3 +82,5 @@
 		      </div>
 	     </div>
 	</div>
+</body>
+	
