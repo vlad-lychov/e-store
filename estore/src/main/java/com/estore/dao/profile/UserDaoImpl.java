@@ -2,10 +2,12 @@ package com.estore.dao.profile;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 import com.estore.dao.common.impl.GenericDaoHibernate;
 import com.estore.datamodel.profile.User;
 
+@Repository
 public class UserDaoImpl extends GenericDaoHibernate<String, User> implements UserDao{
 
 	@Override
