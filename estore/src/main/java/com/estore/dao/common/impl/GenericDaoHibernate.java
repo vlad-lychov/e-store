@@ -1,4 +1,4 @@
-package com.estore.dao.impl;
+package com.estore.dao.common.impl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -15,7 +15,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.estore.dao.GenericDao;
+import com.estore.dao.common.GenericDao;
 
 @SuppressWarnings("unchecked")
 public class GenericDaoHibernate <KEY  extends Serializable, TYPE> extends

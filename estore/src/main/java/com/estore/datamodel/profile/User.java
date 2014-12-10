@@ -1,4 +1,4 @@
-package com.estore.catalog.datamodel;
+package com.estore.datamodel.profile;
 
 public class User {
 

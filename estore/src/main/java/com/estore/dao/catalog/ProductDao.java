@@ -1,8 +1,9 @@
-package com.estore.dao.impl;
+package com.estore.dao.catalog;
 
 import org.springframework.stereotype.Service;
 
-import com.estore.catalog.datamodel.Product;
+import com.estore.dao.common.impl.GenericDaoHibernate;
+import com.estore.datamodel.catalog.Product;
 
 @Service
 public class ProductDao extends GenericDaoHibernate<String, Product> {

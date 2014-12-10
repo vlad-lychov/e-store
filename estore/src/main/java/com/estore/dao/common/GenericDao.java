@@ -1,4 +1,4 @@
-package com.estore.dao;
+package com.estore.dao.common;
 
 import java.io.Serializable;
 import java.util.List;

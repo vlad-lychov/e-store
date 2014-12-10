@@ -1,4 +1,4 @@
-package com.estore;
+package com.estore.controler.catalog;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -13,10 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.estore.catalog.datamodel.Category;
-import com.estore.catalog.datamodel.Product;
-import com.estore.dao.impl.CategoryDao;
-import com.estore.dao.impl.ProductDao;
+import com.estore.dao.catalog.CategoryDao;
+import com.estore.dao.catalog.ProductDao;
+import com.estore.datamodel.catalog.Category;
+import com.estore.datamodel.catalog.Product;
 import com.google.common.collect.Sets;
 
 /**

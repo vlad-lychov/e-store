@@ -1,4 +1,4 @@
-package com.estore.catalog.datamodel;
+package com.estore.datamodel.catalog;
 
 import java.sql.Timestamp;
 import java.util.Set;
