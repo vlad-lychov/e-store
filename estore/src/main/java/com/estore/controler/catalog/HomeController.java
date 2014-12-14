@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.estore.dao.catalog.CategoryDao;
 import com.estore.dao.catalog.ProductDao;
+import com.estore.dao.profile.UserDao;
 import com.estore.datamodel.catalog.Category;
 import com.estore.datamodel.catalog.Product;
+import com.estore.datamodel.profile.User;
 import com.google.common.collect.Sets;
 
 /**
@@ -32,6 +34,9 @@ public class HomeController {
 	
 	@Autowired
 	private CategoryDao categoryDao;
+	
+	@Autowired
+	private UserDao userDao;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -73,6 +78,10 @@ public class HomeController {
 		categoryDao.saveOrUpdate(cat1Created);
 		logger.info("id = " + cat1Created.getId() + " , title = " + cat1Created.getTitle() + " , description = " + cat1Created.getDescription() 
 				+ ", created = " + p.getCreated());
+		
+		User user = userDao.findById("1");
+		logger.info("id = " + user.getId()+ " , name = " + user.getName() + ", email = " + user.getEmail());
+		
 		return "home";
 	}
 	
