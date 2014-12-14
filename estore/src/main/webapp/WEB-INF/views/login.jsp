@@ -1,34 +1,35 @@
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <jsp:include page="header.jsp"/>
 <div class="login">
 	<div class="wrap">
 		<div class="col_1_of_login span_1_of_login">
-			<h4 class="title">New Customers</h4>
-			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan</p>
+			<h4 class="title"><spring:message code="label.new.customers"/></h4>
+			<p></p>
 			<div class="button1">
-			   <a href="register.html"><input type="submit" name="Submit" value="Create an Account"></a>
+			   <a href="register.html"><input type="submit" name="Submit" value="<spring:message code="label.create.account"/>"></a>
 			 </div>
 			 <div class="clear"></div>
 		</div>
 		<div class="col_1_of_login span_1_of_login">
 		<div class="login-title">
-	   		<h4 class="title">Registered Customers</h4>
+	   		<h4 class="title"><spring:message code="label.registered.customers"/></h4>
 			<div id="loginbox" class="loginbox">
 			<form action="" method="post" name="login" id="login-form">
 	   	    <fieldset class="input">
 			 <p id="login-form-username">
-			   <label for="modlgn_username">Email</label>
+			   <label for="modlgn_username"><spring:message code="label.email"/></label>
 		       <input id="modlgn_username" type="text" name="email" class="inputbox" size="18" autocomplete="off">
 			 </p>
 						    
 			 <p id="login-form-password">
-			 	<label for="modlgn_passwd">Password</label>
+			 	<label for="modlgn_passwd"><spring:message code="label.password"/></label>
 				<input id="modlgn_passwd" type="password" name="password" class="inputbox" size="18" autocomplete="off">
 			 </p>
 			 <div class="remember">
 				<p id="login-form-remember">
-					<label for="modlgn_remember"><a href="#">Forget Your Password ? </a></label>
+					<label for="modlgn_remember"><a href="#"><spring:message code="label.forget.password"/></a></label>
 				</p>
-				<input type="submit" name="Submit" class="button" value="Login"><div class="clear"></div>
+				<input type="submit" name="Submit" class="button" value="<spring:message code="label.login"/>"><div class="clear"></div>
 			 </div>
 			</fieldset>
 			</form>

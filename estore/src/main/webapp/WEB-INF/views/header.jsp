@@ -1,3 +1,4 @@
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html>
 <head>
 <title>E-store</title>
@@ -19,27 +20,28 @@
 			  	   <div class="box">
    				      <select tabindex="4" class="dropdown">
 							<option value="" class="label" value="">Language :</option>
-							<option value="1">English</option>
-							<option value="2">French</option>
-							<option value="3">German</option>
+							<option>English</option>
+    						<option>Russian</option>
+							
+							
 					  </select>
    				    </div>
    				    <div class="box1">
    				        <select tabindex="4" class="dropdown">
 							<option value="" class="label" value="">Currency :</option>
 							<option value="1">$ Dollar</option>
-							<option value="2">€ Euro</option>
+							<option value="2">Euro</option>
 						</select>
    				    </div>
    				    <div class="clear"></div>
    			 </div>
 			 <div class="cssmenu">
 				<ul>
-					<li class="active"><a href="login.html">Account</a></li> |
-					<li><a href="checkout.html">Wishlist</a></li> |
-					<li><a href="checkout.html">Checkout</a></li> |
-					<li><a href="login">Log In</a></li> |
-					<li><a href="register.html">Sign Up</a></li>
+					<li class="active"><a href="login.html"><spring:message code="label.account"/></a></li>
+					<li><a href="checkout.html"><spring:message code="label.wishlist"/></a></li>
+					<li><a href="checkout.html"><spring:message code="label.checkout"/></a></li> 
+					<li><a href="login"><spring:message code="label.login"/></a></li> 
+					<li><a href="registration"><spring:message code="label.signup"/></a></li>
 				</ul>
 			</div>
 			<div class="clear"></div>
